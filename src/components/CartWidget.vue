@@ -18,7 +18,7 @@ const active = ref(false);
     </span>
     <!-- Modal Overlay only shows when cart is clicked on -->
     <AppModalOverlay :active="active" @close="active = false">
-      <div>
+      <div v-if="!cartStore.isEmpty">
         <ul class="items-in-cart">
           <CartItem
             :product="{ name: 'Dried Pineapple', price: 5 }"
@@ -42,7 +42,7 @@ const active = ref(false);
         </div>
       </div>
       <!-- Uncomment and use condition to show when cart is empty -->
-      <!-- <div><em>Cart is Empty</em></div> -->
+       <div v-else><em>Cart is Empty</em></div>
     </AppModalOverlay>
   </div>
 </template>
